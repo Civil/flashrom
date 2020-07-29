@@ -744,6 +744,9 @@ CONFIG_DIGILENT_SPI ?= yes
 # Disable J-Link for now.
 CONFIG_JLINK_SPI ?= no
 
+# Always enable Loongson-3 SPI
+CONFIG_LOONGSON3_SPI ?= yes
+
 # Disable wiki printing by default. It is only useful if you have wiki access.
 CONFIG_PRINT_WIKI ?= no
 
@@ -1098,6 +1101,11 @@ endif
 FEATURE_CFLAGS += $(NI845X_INCLUDES)
 LIBS += -lni845x
 PROGRAMMER_OBJS += ni845x_spi.o
+endif
+
+ifeq ($(CONFIG_CH341A_SPI), yes)
+FEATURE_CFLAGS += -D'CONFIG_LOONGSON3_SPI=1'
+PROGRAMMER_OBJS += loongson3_spi.o
 endif
 
 ifeq ($(CONFIG_LINUX_I2C_HELPER), yes)

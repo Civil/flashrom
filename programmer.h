@@ -136,6 +136,9 @@ enum programmer {
 #if CONFIG_REALTEK_MST_I2C_SPI == 1
 	PROGRAMMER_REALTEK_MST_I2C_SPI,
 #endif
+#if CONFIG_LOONGSON3_SPI == 1
+	PROGRAMMER_LOONGSON3_SPI,
+#endif
 	PROGRAMMER_INVALID /* This must always be the last entry. */
 };
 
@@ -586,6 +589,11 @@ int jlink_spi_init(void);
 /* ni845x_spi.c */
 #if CONFIG_NI845X_SPI == 1
 int ni845x_spi_init(void);
+#endif
+
+/* loongson3_spi.c */
+#if CONFIG_LOONGSON3_SPI == 1
+int loongson3_spi_init(void);
 #endif
 
 /* flashrom.c */

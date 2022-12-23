@@ -20,7 +20,7 @@
 #include "flash.h"
 #include "programmer.h"
 
-#if defined (__MIPSEL__) && defined (__linux)
+#if defined (__MIPSEL__ || __loongarch__) && defined (__linux)
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>

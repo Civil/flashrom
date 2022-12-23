@@ -102,6 +102,15 @@ static int cpu_is_loongson64g(char *cpu)
 	if (strcmp(cpu, "3b4000") == 0)
 		return 1;
 
+	if (strcmp(cpu, "3a5000") == 0)
+		return 1;
+
+	if (strcmp(cpu, "3b5000") == 0)
+		return 1;
+
+	if (strcmp(cpu, "3c5000") == 0)
+		return 1;
+
 	return 0;
 }
 
@@ -117,7 +126,7 @@ int loongson3_spi_init(void)
 
 	if (!cpu) {
 		free(cpu);
-		msg_perr("No -cpu specified\n");
+		msg_perr("No cpu parameter specified\n");
 		return 1;
 	}
 
@@ -131,7 +140,7 @@ int loongson3_spi_init(void)
 			msg_pwarn("64g\n");
 	} else {
 		free(cpu);
-		msg_perr("Invalid -cpu specified\n");
+		msg_perr("Invalid cpu specified\n");
 		return 1;
 	}
 

@@ -77,9 +77,12 @@
 #elif defined(__arc__)
 	#define __FLASHROM_ARCH__ "arc"
 	#define IS_ARC 1
+#elif defined(__loongarch__)
+	#define __FLASHROM_ARCH__ "la64"
+	#define IS_LOONGARCH 1
 #endif
 
-#if !(IS_X86 || IS_MIPS || IS_PPC || IS_ARM || IS_SPARC || IS_ALPHA || IS_HPPA || IS_M68K || IS_RISCV || IS_SH || IS_S390 || IS_ARC)
+#if !(IS_X86 || IS_MIPS || IS_PPC || IS_ARM || IS_SPARC || IS_ALPHA || IS_HPPA || IS_M68K || IS_RISCV || IS_SH || IS_S390 || IS_ARC || IS_LOONGARCH)
 #error Unknown architecture
 #endif
 
@@ -90,7 +93,7 @@
 #error Conflicting endianness #define
 #endif
 
-#if IS_X86
+#if (IS_X86 || IS_LOONGARCH)
 
 /* All x86 is little-endian. */
 #define __FLASHROM_LITTLE_ENDIAN__ 1

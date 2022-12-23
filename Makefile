@@ -472,7 +472,7 @@ override CONFIG_INTERNAL = no
 endif
 endif
 
-# PCI port I/O support is unimplemented on PPC/MIPS/SPARC and unavailable on ARM.
+# PCI port I/O support is unimplemented on PPC/MIPS/SPARC/Loongarch and unavailable on ARM.
 # Right now this means the drivers below only work on x86.
 ifneq ($(ARCH), x86)
 ifeq ($(CONFIG_NIC3COM), yes)
@@ -1106,6 +1106,7 @@ endif
 ifeq ($(CONFIG_CH341A_SPI), yes)
 FEATURE_CFLAGS += -D'CONFIG_LOONGSON3_SPI=1'
 PROGRAMMER_OBJS += loongson3_spi.o
+NEED_LIBPCI += CONFIG_LOONGSON3_SPI
 endif
 
 ifeq ($(CONFIG_LINUX_I2C_HELPER), yes)
